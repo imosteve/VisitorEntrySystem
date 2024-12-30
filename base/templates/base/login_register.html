@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<main class="auth layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <h3>Sign Up</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+
+        <!-- Display General Messages -->
+        {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+          <div class="alert alert--error">
+            {{ message }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Form -->
+        <form class="form" method="POST" action="" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          {% for field in form %}
+          <div class="form__group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+
+            <!-- Field-specific errors -->
+            {% if field.errors %}
+            <div class="form__error">
+              {{ field.errors|striptags }}
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+
+          <button class="btn btn--main" type="submit">
+            Register
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

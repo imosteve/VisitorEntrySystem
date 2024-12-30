@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<main class="profile-page">
+  <div class="container">
+
+    <div class="profile">
+
+      <div class="profile__about">
+        <h3>ACCESS GRANTED</h3>
+      </div>
+
+      <div class="profile__avatar">
+        <div class="avatar avatar--large active">
+          <img src="{{user.avatar.url}}" />
+        </div>
+      </div>
+
+      <div class="profile__info">
+        <h2>WELCOME</h2>
+        <h3>{{user.name}}</h3>
+      
+      </div>
+      
+    </div>
+
+  </div>
+</main>
+{% endblock content %}
